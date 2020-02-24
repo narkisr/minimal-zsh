@@ -16,8 +16,8 @@ precmd_functions+=( precmd_vcs_info )
 # git status style
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr '%F{green}v%f'
-zstyle ':vcs_info:*' unstagedstr '%F{red}x%f'
+zstyle ':vcs_info:*' stagedstr '%F{green} ✔  %f'
+zstyle ':vcs_info:*' unstagedstr '%F{red} ✘  %f'
 zstyle ':vcs_info:git:*' formats ' %F{cyan}%b%f%c%u '
 zstyle ':vcs_info:git:*' actionformats ' %F{cyan}%b (%a)%f%c%u '
 
