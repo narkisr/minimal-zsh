@@ -8,7 +8,6 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|[._-]=* r:|=*'
 setopt PROMPT_PERCENT
 setopt PROMPT_SUBST
 
-PROMPT='%B[%n:%F{yellow}%25<..<%~%f%<<]%b$ '
 
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
@@ -19,18 +18,20 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr '%F{green}v%f'
 zstyle ':vcs_info:*' unstagedstr '%F{red}x%f'
-zstyle ':vcs_info:git:*' formats '[%F{cyan}%b%f%c%u]'
-zstyle ':vcs_info:git:*' actionformats '[%F{cyan}%b (%a)%f%c%u]'
+zstyle ':vcs_info:git:*' formats ' %F{cyan}%b%f%c%u '
+zstyle ':vcs_info:git:*' actionformats ' %F{cyan}%b (%a)%f%c%u '
 
-RPROMPT='%B$vcs_info_msg_0_%b'
+PROMPT='%F{blue}% %m ➜  %B%F{white}%n:%F{yellow}%25<..<%~%f%<<%b%B$vcs_info_msg_0_%b$ '
 
-# Plugins
 # Loading completions
-fpath=(/datastore/code/minimal-zsh/completions $fpath)
+fpath=(~/.minimal-zsh/completions $fpath)
 compinit
 
-fpath=(/datastore/code/minimal-zsh/plugins $fpath)
-autoload -Uz /datastore/code/minimal-zsh/plugins
 
+# Plugins
+for file in ~/.minimal-zsh/plugins/*; do
+   source "$file"
+done
 
-set -o vi
+# load z if it exists
+source /opt/z/z.sh
