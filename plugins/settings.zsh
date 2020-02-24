@@ -11,3 +11,5 @@ TERM=xterm-256color
 if [[ ! -s $DISPLAY && `which wmname` == "0" ]]; then
   wmname LG3D
 fi
+
+bindkey '^R' history-incremental-search-backward
