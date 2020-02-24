@@ -13,12 +13,24 @@ autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 
++vi-git-untracked(){
+    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+        git status --porcelain | grep '??' &> /dev/null ; then
+        # This will show the marker if there are any untracked files in repo.
+        # If instead you want to show the marker only if there are untracked
+        # files in $PWD, use:
+        #[[ -n $(git ls-files --others --exclude-standard) ]] ; then
+        hook_com[staged]+='%F{red} ✘ %f'
+    fi
+}
+
 # git status style
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr '%F{green} ✔  %f'
+zstyle ':vcs_info:*' stagedstr '%F{red} ✘ %f'
 zstyle ':vcs_info:*' unstagedstr '%F{red} ✘  %f'
-zstyle ':vcs_info:git:*' formats ' %F{cyan}%b%f%c%u '
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+zstyle ':vcs_info:git:*' formats ' %F{cyan}%b%f%c%u'
 zstyle ':vcs_info:git:*' actionformats ' %F{cyan}%b (%a)%f%c%u '
 
 PROMPT='%F{blue}% %m ➜  %B%F{white}%n:%F{yellow}%25<..<%~%f%<<%b%B$vcs_info_msg_0_%b$ '
