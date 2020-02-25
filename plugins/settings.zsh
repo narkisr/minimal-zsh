@@ -1,4 +1,5 @@
 # Setting vi mode
+export EDITOR='nvim'
 set -o vi
 
 # Sudo setup
