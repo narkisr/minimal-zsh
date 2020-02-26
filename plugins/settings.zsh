@@ -14,3 +14,4 @@ if [[ ! -s $DISPLAY && `which wmname` == "0" ]]; then
 fi
 
 bindkey '^R' history-incremental-search-backward
+export PATH=$PATH:~/bin/
