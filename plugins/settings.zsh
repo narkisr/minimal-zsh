@@ -13,5 +13,12 @@ if [[ ! -s $DISPLAY && `which wmname` == "0" ]]; then
   wmname LG3D
 fi
 
+# History perserve and searching
 bindkey '^R' history-incremental-search-backward
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
+# Home bin
 export PATH=$PATH:~/bin/
