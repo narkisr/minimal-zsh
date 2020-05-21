@@ -42,3 +42,9 @@ done
 
 # load z if it exists
 source /opt/z/z.sh
+
+# Sharing history between active terminals
+setopt inc_append_history
+
+# Read history file each time its being called
+setopt share_history
