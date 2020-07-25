@@ -22,3 +22,8 @@ setopt appendhistory
 
 # Home bin
 export PATH=$PATH:~/bin/
+
+
+# virsh default uri (enable current user to see all vms)
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
