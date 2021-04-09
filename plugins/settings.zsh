@@ -27,3 +27,5 @@ export PATH=$PATH:~/bin/
 # virsh default uri (enable current user to see all vms)
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 
+# Listing all history by default
+alias history="history 0"
