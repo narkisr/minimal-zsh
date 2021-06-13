@@ -20,6 +20,11 @@ function git-sub-up(){
  git submodule foreach git pull
 }
 
+function bundle(){
+ repo=${PWD##*/}
+ git bundle create $repo.bundle --all
+}
+
 function git-ssh-remote(){
   remote=`git push origin master 2>&1 | awk '/Use.*/{print $2}'`
   remote=`echo $remote | sed -e 's/https:\/\/github.com/git@github.com:/g'`
@@ -32,6 +37,7 @@ function git-remaster(){
   git pull origin master
   git stash apply stash@\{0\}
 }
+
 function git-re-attach(){
   git checkout master
   git merge HEAD@{1}
