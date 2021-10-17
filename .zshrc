@@ -48,3 +48,5 @@ setopt inc_append_history
 
 # Read history file each time its being called
 setopt share_history
+
+setopt HIST_IGNORE_SPACE
