@@ -32,6 +32,7 @@ PROMPT='%F{blue}% %m ➜  %B%F{white}%n:%F{yellow}%25<..<%~%f%<<%b%B$vcs_info_ms
 
 # Loading completions
 fpath=(~/.minimal-zsh/completions $fpath)
+autoload -Uz compinit
 compinit
 
 
